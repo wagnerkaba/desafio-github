@@ -1,11 +1,22 @@
 
 import './App.css';
+import Cabecalho from './componentes/Cabecalho';
+import Home from './paginas/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <BrowserRouter>
+        <Cabecalho />
+        <Routes>
+          <Route exact path='/' element={<Home/>}/>
 
-    </div>
+
+        </Routes>
+
+      </BrowserRouter>
+    </>
   );
 }
 
