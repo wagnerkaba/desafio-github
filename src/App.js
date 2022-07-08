@@ -1,21 +1,35 @@
 
-import './App.css';
-import Cabecalho from './componentes/Cabecalho';
-import Home from './paginas/Home';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './assets/css/base/base.css';
+import Login from './componentes/Login';
+import Home from './componentes/Home';
+import RotaPrivada from './componentes/RotaPrivada';
+import Repositorios from './componentes/Repositorios';
+import { ProvideAuth } from './componentes/Autenticacao';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Cabecalho />
-        <Routes>
-          <Route exact path='/' element={<Home/>}/>
+      <ProvideAuth>
+        <BrowserRouter>
+
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/privado" element={<RotaPrivada />}>
+              <Route path="" element={<Home />} />
+              <Route path="repos" element={<Repositorios />} />
 
 
-        </Routes>
+            </Route>
 
-      </BrowserRouter>
+          </Routes>
+
+        </BrowserRouter>
+      </ProvideAuth>
     </>
   );
 }
