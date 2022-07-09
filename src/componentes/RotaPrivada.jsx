@@ -3,9 +3,10 @@ import { useAuth } from './Autenticacao';
 import Cabecalho from './Cabecalho';
 
 function RotaPrivada() {
-    let estaAutenticado = useAuth();
+    let auth = useAuth();
 
-    if (estaAutenticado) {
+    // se usuario esta logado, mostra a página privada
+    if (auth.user) {
         return (
             <>
                 <Cabecalho />
@@ -13,6 +14,8 @@ function RotaPrivada() {
             </>
         );
     }
+
+    // se usuário não está logado, ele é redirecionado para login
     return <Navigate to="/login" />;
 }
 
