@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from './Autenticacao';
-import Cabecalho from './Cabecalho';
+import Drawer from './Drawer';
 
 function RotaPrivada() {
     let auth = useAuth();
@@ -9,7 +9,7 @@ function RotaPrivada() {
     if (auth.user) {
         return (
             <>
-                <Cabecalho />
+                <Drawer />
                 <Outlet />
             </>
         );

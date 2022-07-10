@@ -13,10 +13,16 @@ const Login = () => {
     let location = useLocation();
     let auth = useAuth();
 
-    let { from } = location.state || { from: { pathname: "/" } };
+    //===================
+    // CORRIGIR
+    //===================
+    let { from } = location.state || { from: { pathname: "../privado" } };
+
+
     let login = () => {
         auth.signin(() => {
-            navigate("../privado", {replace: true});
+            navigate(from, {replace: true});
+          
         });
     };
     return (
@@ -27,7 +33,7 @@ const Login = () => {
                     label="Username do github"
                     variant="outlined"
                     margin= "normal"
-                    fullwidth
+                    fullwidth ="true"
                     required
                 />
                 
