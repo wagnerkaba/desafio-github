@@ -4,7 +4,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {
-    Drawer as MUIDrawer,
     ListItem,
     List,
     ListItemIcon,
@@ -13,10 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 
-
-
-
-const Drawer = props => {
+const DrawerItens = () => {
     const navigate = useNavigate();
     const itemsList = [
         {
@@ -27,7 +23,7 @@ const Drawer = props => {
         {
             text: "Repositórios",
             icon: <GitHubIcon />,
-            onClick: () => navigate("../privado/repos", {replace: true})
+            onClick: () => navigate("repos", {replace: true})
         },
         {
             text: "Seguindo",
@@ -45,8 +41,9 @@ const Drawer = props => {
             onClick: () => navigate("sair", {replace: true})
         }
     ];
+
+
     return (
-        <MUIDrawer variant="permanent">
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
@@ -60,30 +57,8 @@ const Drawer = props => {
                 })}
             </List>
 
-        </MUIDrawer>
     );
 };
 
 
-
-// const Drawer = () => {
-//     const [value, setValue] = React.useState(0);
-
-//     const handleChange = (event, newValue) => {
-//         setValue(newValue);
-//     };
-
-//     return (
-//         <header className='cabecalho flex flex--centro'>
-//             <Tabs value={value} onChange={handleChange} aria-label="icon label tabs example">
-//                 <Tab icon={<HomeIcon />} label="HOME" />
-//                 <Tab icon={<GitHubIcon />} label="REPOS" />
-//                 <Tab icon={<GroupIcon />} label="Seguidores" />
-//                 <Tab icon={<GroupIcon />} label="Seguindo" />
-//             </Tabs>
-//         </header>
-
-//     );
-// }
-
-export default Drawer;
+export default DrawerItens;
