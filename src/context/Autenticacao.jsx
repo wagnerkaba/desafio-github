@@ -1,5 +1,6 @@
 
 import React, { useContext, createContext, useState } from "react";
+import { buscarUsuario } from "../servicos/apiGitHub";
 
 const authContext = createContext();
 
@@ -19,10 +20,10 @@ function useAuth() {
 function useProvideAuth() {
     const [user, setUser] = useState(null);
 
-    const signin = callbackFunction => {
+    const signin = (user) => {
+        buscarUsuario(user);
+        setUser(user);
 
-        setUser("user");
-        callbackFunction();
 
     };
 
@@ -33,6 +34,7 @@ function useProvideAuth() {
 
     return {
         user,
+        setUser,
         signin,
         signout
     };

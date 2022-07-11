@@ -5,7 +5,15 @@ const Home = () => {
     return (
         <main>
             <div className="container flex flex--coluna">
-                <h1>Home</h1>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+
+               <h1>Home</h1>
             </div>
         </main>
     );

@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import {
   Drawer as MUIDrawer,
 } from "@mui/material";
+
 import DrawerItens from './DrawerItens';
 
 const drawerWidth = 240;
@@ -60,7 +61,6 @@ const DrawerResponsivo = (props) => {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         {/*==================================== TEMPORARY DRAWER ====================================*/}
         <MUIDrawer
           container={container}
@@ -78,7 +78,7 @@ const DrawerResponsivo = (props) => {
           <DrawerItens />
         </MUIDrawer>
 
-        {/*==================================== PERMANENT MUIDrawer ====================================*/}
+        {/*==================================== PERMANENT Drawer ====================================*/}
         <MUIDrawer
           variant="permanent"
           sx={{

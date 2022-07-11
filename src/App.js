@@ -1,14 +1,14 @@
 
 import './assets/css/base/base.css';
-import Login from './componentes/Login';
-import Home from './componentes/Home';
-import RotaPrivada from './componentes/RotaPrivada';
-import Repositorios from './componentes/Repositorios';
-import Seguidores from './componentes/Seguidores';
-import Seguindo from './componentes/Seguindo';
+import Login from './paginas/Login';
+import Home from './paginas/Home';
+import RotaPrivada from './rotas/RotaPrivada';
+import Repositorios from './paginas/Repositorios';
+import Seguidores from './paginas/Seguidores';
+import Seguindo from './paginas/Seguindo';
 
 
-import { ProvideAuth } from './componentes/Autenticacao';
+import { ProvideAuth } from './context/Autenticacao';
 import {
   BrowserRouter,
   Route,
@@ -24,7 +24,7 @@ function App() {
         <BrowserRouter>
 
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route exact path="/" element={<Login />} />
             <Route path="/privado" element={<RotaPrivada/>}>
               <Route path="" element={<Home />} />
               <Route path="repos" element={<Repositorios />} />

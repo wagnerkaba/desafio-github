@@ -7,7 +7,9 @@ import {
     ListItem,
     List,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    Toolbar,
+    Divider
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
@@ -18,32 +20,35 @@ const DrawerItens = () => {
         {
             text: "Home",
             icon: <HomeIcon />,
-            onClick: () => navigate("../privado/", {replace: true})
+            onClick: () => navigate("../privado/", { replace: true })
         },
         {
             text: "Repositórios",
             icon: <GitHubIcon />,
-            onClick: () => navigate("repos", {replace: true})
+            onClick: () => navigate("repos", { replace: true })
         },
         {
             text: "Seguindo",
             icon: <GroupIcon />,
-            onClick: () => navigate("seguindo", {replace: true})
+            onClick: () => navigate("seguindo", { replace: true })
         },
         {
             text: "Seguidores",
             icon: <GroupIcon />,
-            onClick: () => navigate("seguidores", {replace: true})
+            onClick: () => navigate("seguidores", { replace: true })
         },
         {
             text: "Sair",
             icon: <LogoutIcon />,
-            onClick: () => navigate("sair", {replace: true})
+            onClick: () => navigate("sair", { replace: true })
         }
     ];
 
 
     return (
+        <>
+            <Toolbar/>
+            <Divider/>
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
@@ -56,6 +61,7 @@ const DrawerItens = () => {
                     );
                 })}
             </List>
+        </>
 
     );
 };

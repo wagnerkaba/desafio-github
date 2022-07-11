@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from './Autenticacao';
-import DrawerResponsivo from './DrawerResponsivo';
+import { useAuth } from '../context/Autenticacao';
+import DrawerResponsivo from '../componentes/drawer/DrawerResponsivo';
 
 function RotaPrivada() {
     let auth = useAuth();
@@ -16,7 +16,7 @@ function RotaPrivada() {
     }
 
     // se usuário não está logado, ele é redirecionado para login
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
 }
 
 export default RotaPrivada;
