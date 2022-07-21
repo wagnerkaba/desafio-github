@@ -12,9 +12,11 @@ import {
     Divider
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/Autenticacao';
 
 
 const DrawerItens = () => {
+    const auth = useAuth();
     const navigate = useNavigate();
     const itemsList = [
         {
@@ -40,7 +42,10 @@ const DrawerItens = () => {
         {
             text: "Sair",
             icon: <LogoutIcon />,
-            onClick: () => navigate("sair", { replace: true })
+            onClick: () => {
+                auth.setUser(null);
+                navigate("/", { replace: true });
+            }
         }
     ];
 

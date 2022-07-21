@@ -5,21 +5,34 @@ import {
     useNavigate
 } from "react-router-dom";
 import { useAuth } from '../context/Autenticacao';
+import axios from "axios";
+
 
 const Login = () => {
 
     const [usuario, setUsuario] = useState(null);
+    const [erro, setErro] = useState({valido:true, texto: ""});
     let navigate = useNavigate();
     let auth = useAuth();
 
-    let login = () => {
+    async function login() {
 
-        auth.signin(usuario);
+        try {
+            const userGitHub = await axios.get(`https://api.github.com/users/${usuario}`);
+            console.log(userGitHub);
+            auth.setUser(userGitHub.data.login);
+            navigate("../privado", { replace: true });
+        }
+        catch (erro) {
+            setErro({valido:false, texto: "Verifique se o nome de usuário está correto"});
 
-        // navigate("../privado", { replace: true });
-    };
+        }
+
+    }
+
     return (
         <main>
+
             <form
                 className="container flex flex--coluna"
                 onSubmit={(event) => {
@@ -35,6 +48,8 @@ const Login = () => {
                     margin="normal"
                     fullwidth="true"
                     required
+                    error={!erro.valido} //mostra caixa de texto em vermelho para indicar erro
+                    helperText={erro.texto} // mostra texto de erro para
                 />
 
                 <Button type="submit" variant="contained">Entrar</Button>
