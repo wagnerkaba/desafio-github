@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/Autenticacao';
 import DrawerResponsivo from '../componentes/drawer/DrawerResponsivo';
+import Box from '@mui/material/Box';
 
 function RotaPrivada() {
     let auth = useAuth();
@@ -8,10 +9,12 @@ function RotaPrivada() {
     // se usuario esta logado, mostra a página privada
     if (auth.user) {
         return (
-            <>
+
+            <Box sx={{ display: 'flex' }}>
                 <DrawerResponsivo />
                 <Outlet />
-            </>
+            </Box>
+
         );
     }
 

@@ -21,6 +21,8 @@ const Login = () => {
             const userGitHub = await axios.get(`https://api.github.com/users/${usuario}`);
             console.log(userGitHub);
             auth.setUser(userGitHub.data.login);
+            auth.setAvatar(userGitHub.data.avatar_url);
+            console.log(auth.avatar);
             navigate("../privado", { replace: true });
         }
         catch (erro) {

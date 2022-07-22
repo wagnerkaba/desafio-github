@@ -18,12 +18,13 @@ function useAuth() {
 
 function useProvideAuth() {
     const [user, setUser] = useState(null);
-
-
+    const [avatar, setAvatar] = useState("");
 
     return {
         user,
-        setUser
+        setUser,
+        avatar,
+        setAvatar
     };
 }
 

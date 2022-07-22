@@ -10,12 +10,13 @@ import {
 } from "@mui/material";
 
 import DrawerItens from './DrawerItens';
+import { useAuth } from '../../context/Autenticacao';
 
 const drawerWidth = 240;
 
 
 const DrawerResponsivo = (props) => {
-
+  const auth = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -27,7 +28,9 @@ const DrawerResponsivo = (props) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+
+    <>
+
 
       {/*==================================== APP BAR ====================================*/}
 
@@ -49,7 +52,8 @@ const DrawerResponsivo = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+
+            {auth.user}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -92,9 +96,9 @@ const DrawerResponsivo = (props) => {
         </MUIDrawer>
       </Box>
 
+    </>
 
 
-    </Box>
   );
 }
 
