@@ -41,7 +41,7 @@ const ResponsiveAppBar = () => {
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 
-                    {/* LOGO */}
+                    {/* LOGO - TELA MENOR - LADO DIREITO */}
                     <Typography
                         variant="h6"
                         noWrap
@@ -103,7 +103,7 @@ const ResponsiveAppBar = () => {
 
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
-                    {/* LOGO GRANDE QUE SURGE NO MEIO  */}
+                    {/* LOGO - TELA MAIOR - MEIO DA TELA  */}
                     <Typography
                         variant="h5"
                         noWrap
