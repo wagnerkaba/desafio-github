@@ -7,6 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import {
   Drawer as MUIDrawer,
+  Avatar
 } from "@mui/material";
 
 import DrawerItens from './DrawerItens';
@@ -41,7 +42,7 @@ const DrawerResponsivo = (props) => {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -51,10 +52,18 @@ const DrawerResponsivo = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" >
 
             {auth.user}
+
           </Typography>
+          <Box>
+            <Avatar
+              alt={auth.user}
+              src={auth.avatar}
+            />
+          </Box>
+
         </Toolbar>
       </AppBar>
 
