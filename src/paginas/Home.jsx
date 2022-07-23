@@ -23,7 +23,7 @@ const Home = () => {
             sx={{
                 flexGrow: 1,
                 p: 3,
-                maxWidth: 'md',
+                maxWidth: 'sm',
                 mx: "auto",
                 width: { sm: `calc(100% - ${drawerWidth}px)` }
             }}
@@ -36,7 +36,7 @@ const Home = () => {
                     alt={auth.user}
                     src={auth.avatar}
                     // Para entender mx, vide mui spacing (https://mui.com/system/spacing/)
-                    sx={{ mx: "auto", width: 200, height: 200 }}
+                    sx={{ mx: "auto", width: 150, height: 150 }}
                 />
 
 

@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import {
     TextField,
     Button,
-    Box
+    Box,
+    Slide
 } from "@mui/material";
+import GitHubIcon from '@mui/icons-material/GitHub';
 import {
     useNavigate
 } from "react-router-dom";
@@ -37,6 +39,7 @@ const Login = () => {
     }
 
     return (
+
         <Box
             component="form"
             onSubmit={(event) => {
@@ -52,9 +55,18 @@ const Login = () => {
                 justifyContent: 'center',
                 mx: "auto",
             }}
-
         >
+            <Slide direction="down" in={true}>
+                <GitHubIcon
+                    sx={{
+                        fontSize: 150,
+                        mx: "auto",
+                        color: "gray"
+                    }}
 
+                />
+
+            </Slide>
 
             <TextField
                 onChange={(event) => { setUsuario(event.target.value) }}
@@ -68,7 +80,9 @@ const Login = () => {
                 helperText={erro.texto} // mostra texto de erro para
             />
 
-            <Button type="submit" variant="contained">Entrar</Button>
+            <Button type="submit" variant="contained">
+                Entrar
+            </Button>
 
         </Box >
     );
