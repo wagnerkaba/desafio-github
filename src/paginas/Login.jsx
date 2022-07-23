@@ -25,7 +25,7 @@ const Login = () => {
 
         try {
             const userGitHub = await axios.get(`https://api.github.com/users/${usuario}`);
-            console.log(userGitHub);
+            localStorage.setItem("userGitHub", JSON.stringify(userGitHub.data));
             auth.setUser(userGitHub.data.login);
             auth.setAvatar(userGitHub.data.avatar_url);
             console.log(auth.avatar);
@@ -60,8 +60,8 @@ const Login = () => {
                 <GitHubIcon
                     sx={{
                         fontSize: 150,
-                        mx: "auto",
-                        color: "gray"
+                        mx: "auto", // Para entender mx, vide mui spacing (https://mui.com/system/spacing/)
+                        color: "info.main" // Para entender cores, vide Palette: https://mui.com/system/palette/
                     }}
 
                 />
