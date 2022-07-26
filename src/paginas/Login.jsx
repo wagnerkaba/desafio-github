@@ -28,7 +28,6 @@ const Login = () => {
             localStorage.setItem("userGitHub", JSON.stringify(userGitHub.data));
             auth.setUser(userGitHub.data.login);
             auth.setAvatar(userGitHub.data.avatar_url);
-            console.log(auth.avatar);
             navigate("../privado", { replace: true });
         }
         catch (erro) {
