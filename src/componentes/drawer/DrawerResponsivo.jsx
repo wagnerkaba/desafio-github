@@ -4,10 +4,12 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import {
   Drawer as MUIDrawer,
-  Avatar
+  Avatar,
+  Snackbar
 } from "@mui/material";
 
 import DrawerItens from './DrawerItens';
@@ -20,11 +22,28 @@ const DrawerResponsivo = (props) => {
   const auth = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [sobre, setSobre] = React.useState(false);
 
   const handleDrawerToggle = () => {
     console.log("teste");
     setMobileOpen(!mobileOpen);
   };
+
+  const abrirSobre = () => setSobre(true);
+  const fecharSobre = () => setSobre(false);
+
+  const actionSobre = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={fecharSobre}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
 
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -58,12 +77,20 @@ const DrawerResponsivo = (props) => {
             {auth.user}
 
           </Typography>
-          <Box>
+          <IconButton onClick={abrirSobre}>
             <Avatar
               alt={auth.user}
               src={auth.avatar}
             />
-          </Box>
+          </IconButton>
+          <Snackbar
+            open={sobre}
+            autoHideDuration={6000}
+            onClose={fecharSobre}
+            message="Implementado por WAGNER KABA"
+            action={actionSobre}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          />
 
         </Toolbar>
       </AppBar>
@@ -89,7 +116,7 @@ const DrawerResponsivo = (props) => {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
-          <DrawerItens setMobileOpen={setMobileOpen}/>
+          <DrawerItens setMobileOpen={setMobileOpen} />
         </MUIDrawer>
 
         {/*==================================== PERMANENT Drawer ====================================*/}
@@ -101,7 +128,7 @@ const DrawerResponsivo = (props) => {
           }}
           open
         >
-          <DrawerItens setMobileOpen={setMobileOpen}/>
+          <DrawerItens setMobileOpen={setMobileOpen} />
 
         </MUIDrawer>
       </Box>
