@@ -1,22 +1,15 @@
 
 import React from "react";
 import {
-    Avatar,
+
     Box,
-    Container,
-    List,
-    ListItem,
-    ListItemAvatar,
-    ListItemText,
-    Toolbar,
-    Typography
+    Toolbar
 } from "@mui/material";
-import { useAuth } from '../context/Autenticacao';
+
 
 
 const Repositorios = () => {
     const drawerWidth = 240;
-    const auth = useAuth();
     return (
 
         <Box
@@ -27,21 +20,8 @@ const Repositorios = () => {
             <h1>
                 Repositorios
             </h1>
-            <List dense={false}>
-                <ListItem>
-                    <ListItemAvatar>
-                        <Avatar
-                            alt={auth.user}
-                            src={auth.avatar}
-                            sx={{ width: 100, height: 100 }}
-                        />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary={auth.user}
-                    />
-                </ListItem>
 
-            </List>
+
         </Box>
 
     );

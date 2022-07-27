@@ -20,7 +20,6 @@ const Home = () => {
     const auth = useAuth();
 
     const userGitHub = JSON.parse(localStorage.getItem("userGitHub"));
-    console.log(userGitHub);
 
 
 

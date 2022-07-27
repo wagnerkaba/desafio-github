@@ -16,15 +16,17 @@ import axios from "axios";
 
 const Login = () => {
 
-    const [usuario, setUsuario] = useState(null);
+    const [inputUsuario, setInputUsuario] = useState(null);
     const [erro, setErro] = useState({ valido: true, texto: "" });
     let navigate = useNavigate();
     let auth = useAuth();
 
+
+
     async function login() {
 
         try {
-            const userGitHub = await axios.get(`https://api.github.com/users/${usuario}`);
+            const userGitHub = await axios.get(`https://api.github.com/users/${inputUsuario}`);
             localStorage.setItem("userGitHub", JSON.stringify(userGitHub.data));
             auth.setUser(userGitHub.data.login);
             auth.setAvatar(userGitHub.data.avatar_url);
@@ -32,6 +34,7 @@ const Login = () => {
         }
         catch (erro) {
             setErro({ valido: false, texto: "Verifique se o nome de usuário está correto" });
+
 
         }
 
@@ -44,6 +47,7 @@ const Login = () => {
             onSubmit={(event) => {
                 event.preventDefault();
                 login();
+
             }}
             sx={{
                 p: 3,
@@ -68,7 +72,7 @@ const Login = () => {
             </Slide>
 
             <TextField
-                onChange={(event) => { setUsuario(event.target.value) }}
+                onChange={(event) => { setInputUsuario(event.target.value) }}
                 id="outlined-basic"
                 label="Username do github"
                 variant="outlined"
