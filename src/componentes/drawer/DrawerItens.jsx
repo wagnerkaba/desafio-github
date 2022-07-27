@@ -15,29 +15,41 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Autenticacao';
 
 
-const DrawerItens = () => {
+const DrawerItens = (props) => {
     const auth = useAuth();
     const navigate = useNavigate();
     const itemsList = [
         {
             text: "Home",
             icon: <HomeIcon />,
-            onClick: () => navigate("../privado/", { replace: true })
+            onClick: () => {
+                props.setMobileOpen(false);
+                navigate("../privado/", { replace: true })
+            }
         },
         {
             text: "Repositórios",
             icon: <GitHubIcon />,
-            onClick: () => navigate("repos", { replace: true })
+            onClick: () => {
+                props.setMobileOpen(false);
+                navigate("repos", { replace: true });
+            }
         },
         {
             text: "Seguindo",
             icon: <GroupIcon />,
-            onClick: () => navigate("seguindo", { replace: true })
+            onClick: () => {
+                props.setMobileOpen(false);
+                navigate("seguindo", { replace: true });
+            }
         },
         {
             text: "Seguidores",
             icon: <GroupIcon />,
-            onClick: () => navigate("seguidores", { replace: true })
+            onClick: () => {
+                props.setMobileOpen(false);
+                navigate("seguidores", { replace: true });
+            }
         },
         {
             text: "Sair",
@@ -52,8 +64,8 @@ const DrawerItens = () => {
 
     return (
         <>
-            <Toolbar/>
-            <Divider/>
+            <Toolbar />
+            <Divider />
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;

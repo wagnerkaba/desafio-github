@@ -22,6 +22,7 @@ const DrawerResponsivo = (props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
+    console.log("teste");
     setMobileOpen(!mobileOpen);
   };
 
@@ -88,7 +89,7 @@ const DrawerResponsivo = (props) => {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
-          <DrawerItens />
+          <DrawerItens setMobileOpen={setMobileOpen}/>
         </MUIDrawer>
 
         {/*==================================== PERMANENT Drawer ====================================*/}
@@ -100,7 +101,7 @@ const DrawerResponsivo = (props) => {
           }}
           open
         >
-          <DrawerItens />
+          <DrawerItens setMobileOpen={setMobileOpen}/>
 
         </MUIDrawer>
       </Box>

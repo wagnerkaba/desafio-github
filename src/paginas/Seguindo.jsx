@@ -46,7 +46,7 @@ const Seguindo = () => {
         >
             <Toolbar />
             <Typography variant="h5">
-                Seguidores
+                Seguindo
             </Typography>
             <List dense={false}>
                 {
