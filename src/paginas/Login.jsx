@@ -71,7 +71,7 @@ const Login = () => {
                 />
 
             </Slide>
-            <Tooltip title='Digite um usuário do github para começar.'>
+            <Tooltip title='Digite um usuário do github para começar.' placement="top-start">
                 <TextField
                     onChange={(event) => { setInputUsuario(event.target.value) }}
                     id="outlined-basic"
