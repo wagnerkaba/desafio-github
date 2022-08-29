@@ -4,7 +4,8 @@ import {
     TextField,
     Button,
     Box,
-    Slide
+    Slide,
+    Tooltip
 } from "@mui/material";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import {
@@ -70,18 +71,20 @@ const Login = () => {
                 />
 
             </Slide>
+            <Tooltip title='Digite um usuário do github para começar.'>
+                <TextField
+                    onChange={(event) => { setInputUsuario(event.target.value) }}
+                    id="outlined-basic"
+                    label="Username do github"
+                    variant="outlined"
+                    margin="normal"
+                    fullwidth="true"
+                    required
+                    error={!erro.valido} //mostra caixa de texto em vermelho para indicar erro
+                    helperText={erro.texto} // mostra texto de erro para
+                />
+            </Tooltip>
 
-            <TextField
-                onChange={(event) => { setInputUsuario(event.target.value) }}
-                id="outlined-basic"
-                label="Username do github"
-                variant="outlined"
-                margin="normal"
-                fullwidth="true"
-                required
-                error={!erro.valido} //mostra caixa de texto em vermelho para indicar erro
-                helperText={erro.texto} // mostra texto de erro para
-            />
 
             <Button type="submit" variant="contained">
                 Entrar
