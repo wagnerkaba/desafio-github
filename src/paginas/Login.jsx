@@ -60,7 +60,7 @@ const Login = () => {
                 mx: "auto",
             }}
         >
-            <Slide direction="down" in={true}>
+            <Slide direction="down" in={true} timeout={1000}>
                 <GitHubIcon
                     sx={{
                         fontSize: 150,
