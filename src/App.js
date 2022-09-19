@@ -4,7 +4,7 @@ import Login from './paginas/Login';
 import Home from './paginas/Home';
 import RotaPrivada from './rotas/RotaPrivada';
 import Repositorios from './paginas/Repositorios';
-
+import { ProvideChangeTheme } from './context/ChangeTheme';
 
 import { ProvideAuth } from './context/Autenticacao';
 import {
@@ -15,9 +15,11 @@ import {
 import { CssBaseline } from '@mui/material';
 import VisualizarLista from './componentes/VisualizarLista';
 
+
+
 function App() {
   return (
-    <>
+    <ProvideChangeTheme>
       <CssBaseline />
       <ProvideAuth>
         <BrowserRouter>
@@ -35,7 +37,7 @@ function App() {
 
         </BrowserRouter>
       </ProvideAuth>
-    </>
+    </ProvideChangeTheme>
   );
 }
 

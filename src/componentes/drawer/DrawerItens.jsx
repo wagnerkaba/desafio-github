@@ -3,21 +3,28 @@ import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import {
     ListItem,
     List,
     ListItemIcon,
     ListItemText,
     Toolbar,
+    useTheme,
     Divider
 } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Autenticacao';
+import { useChangeTheme } from '../../context/ChangeTheme';
 
 
 const DrawerItens = (props) => {
     const auth = useAuth();
     const navigate = useNavigate();
+    const colorMode = useChangeTheme();
+    const theme = useTheme();
+    let corTema = theme.palette.mode === 'dark' ? 'Claro' : 'Escuro';
+
     const itemsList = [
         {
             text: "Home",
@@ -50,6 +57,15 @@ const DrawerItens = (props) => {
                 props.setMobileOpen(false);
                 navigate("seguidores", { replace: true });
             }
+        },
+        {
+            text: `Tema ${corTema}`,
+            icon: <Brightness7Icon />,
+            onClick: ()=>{
+                colorMode.toggleColorMode();
+            }
+
+
         },
         {
             text: "Sair",

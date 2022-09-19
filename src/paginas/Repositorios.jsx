@@ -29,9 +29,6 @@ const Repositorios = () => {
         [url]
     );
 
-    console.log(repositorios);
-
-
     return (
 
         <Box
