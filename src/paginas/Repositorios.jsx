@@ -4,6 +4,7 @@ import {
     Box,
     List,
     ListItem,
+    ListItemButton,
     ListItemAvatar,
     ListItemText,
     Toolbar,
@@ -27,6 +28,8 @@ const Repositorios = () => {
         },
         [url]
     );
+
+    console.log(repositorios);
 
 
     return (
@@ -52,13 +55,20 @@ const Repositorios = () => {
                             divider={true}
                             key={repositorio.name}
                         >
+                            <ListItemButton
+                                component="button"
+                                href={repositorio.html_url}
+                                target={"_blank"}
+                                rel={"noreferrer"}
+                                >
 
                                 <ListItemAvatar>
-                                    <GitHubIcon/>
+                                    <GitHubIcon />
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary={repositorio.name}
                                 />
+                            </ListItemButton>
                         </ListItem>
                     ))
                 }

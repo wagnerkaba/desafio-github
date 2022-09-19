@@ -18,10 +18,10 @@ import {
 } from "react-router-dom";
 
 
-const Seguindo = () => {
+const VisualizarLista = ({tipoLista, titulo}) => {
     const drawerWidth = 240;
     const auth = useAuth();
-    const url = `https://api.github.com/users/${auth.user}/following`;
+    const url = `https://api.github.com/users/${auth.user}/${tipoLista}`;
     const [seguidores, setSeguidores] = useState([]);
     const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const Seguindo = () => {
         >
             <Toolbar />
             <Typography variant="h5">
-                Seguindo
+                {titulo}
             </Typography>
             <List dense={false}>
                 {
@@ -83,4 +83,4 @@ const Seguindo = () => {
     );
 }
 
-export default Seguindo;
+export default VisualizarLista;

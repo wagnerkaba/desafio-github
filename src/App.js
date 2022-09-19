@@ -4,8 +4,6 @@ import Login from './paginas/Login';
 import Home from './paginas/Home';
 import RotaPrivada from './rotas/RotaPrivada';
 import Repositorios from './paginas/Repositorios';
-import Seguidores from './paginas/Seguidores';
-import Seguindo from './paginas/Seguindo';
 
 
 import { ProvideAuth } from './context/Autenticacao';
@@ -15,6 +13,7 @@ import {
   Routes,
 } from "react-router-dom";
 import { CssBaseline } from '@mui/material';
+import VisualizarLista from './componentes/VisualizarLista';
 
 function App() {
   return (
@@ -28,11 +27,8 @@ function App() {
             <Route path="/privado" element={<RotaPrivada/>}>
               <Route path="" element={<Home />} />
               <Route path="repos" element={<Repositorios />} />
-              <Route path="seguidores" element={<Seguidores />} />
-              <Route path="seguindo" element={<Seguindo />} />
-
-
-
+              <Route path="seguidores" element={<VisualizarLista tipoLista={'followers'} titulo={'Seguidores'} />} />
+              <Route path="seguindo" element={<VisualizarLista tipoLista={'following'} titulo={'Seguindo'} />} />
             </Route>
 
           </Routes>
