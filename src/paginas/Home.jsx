@@ -90,9 +90,6 @@ const Home = () => {
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                {/* <StyledTableCell>
-                                    User
-                                </StyledTableCell> */}
                                 <StyledTableCell colspan="2" align="center">
                                     {auth.user}
                                 </StyledTableCell>
