@@ -1,1 +1,5 @@
+# O Netfly não estava fazendo redirecionamento de rotas. Por exemplo, se o usuário entrasse direto em "/privado", o netfly apenas dava uma mensagem de 404
+# Encontrei a solução aqui: https://answers.netlify.com/t/netlify-page-not-found-when-sharing-react-router-dom-based-links/11744
+# Para maiores informações sobre _redirect: https://docs.netlify.com/routing/redirects/
+
 /* /index.html 200
