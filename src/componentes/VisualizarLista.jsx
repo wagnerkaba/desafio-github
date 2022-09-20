@@ -61,7 +61,7 @@ const VisualizarLista = ({tipoLista, titulo}) => {
                                 onClick={
                                     () => {
                                         buscaUsuario(seguidor.login, auth.setUser, auth.setAvatar )
-                                        navigate("/privado", { replace: true });
+                                        navigate("/privado");
                                     }
                                 }>
                                 <ListItemAvatar>

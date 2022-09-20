@@ -61,7 +61,7 @@ const DrawerItens = (props) => {
         {
             text: `Tema ${corTema}`,
             icon: <Brightness7Icon />,
-            onClick: ()=>{
+            onClick: () => {
                 colorMode.toggleColorMode();
             }
 
@@ -85,12 +85,23 @@ const DrawerItens = (props) => {
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
+                    console.log(index);
+                    console.log(text);
                     return (
+                        <>
+                            {
+                                // Mostra um Divider após Seguidores
+                                (index===4)? <Divider/> : null
+                                
+                            }
+                            <ListItem button key={text} onClick={onClick}>
+                                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                                <ListItemText primary={text} />
+                            </ListItem>
 
-                        <ListItem button key={text} onClick={onClick}>
-                            {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                            <ListItemText primary={text} />
-                        </ListItem>
+                        </>
+
+
                     );
                 })}
             </List>
