@@ -85,8 +85,7 @@ const DrawerItens = (props) => {
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
-                    console.log(index);
-                    console.log(text);
+
                     return (
                         <>
                             {
