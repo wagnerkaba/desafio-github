@@ -18,7 +18,7 @@ import {
 } from "react-router-dom";
 
 
-const VisualizarLista = ({tipoLista, titulo}) => {
+const VisualizarLista = ({tipoLista, titulo, Componente}) => {
     const drawerWidth = 240;
     const auth = useAuth();
     const url = `https://api.github.com/users/${auth.user}/${tipoLista}`;

@@ -10,18 +10,53 @@ import {
     TableRow,
     TableCell,
     TableHead,
-    TableBody
+    TableBody,
+    styled,
+    tableCellClasses
 } from "@mui/material";
 import { useAuth } from '../context/Autenticacao';
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.grey[800],
+        color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
 
 
 const Home = () => {
     const drawerWidth = 240;
     const auth = useAuth();
-
     const userGitHub = JSON.parse(localStorage.getItem("userGitHub"));
 
-
+    const linhas = [
+        {
+            titulo: 'Repositórios',
+            dado: userGitHub.public_repos
+        },
+        {
+            titulo: 'Seguidores',
+            dado: userGitHub.followers
+        },
+        {
+            titulo: 'Seguindo',
+            dado: userGitHub.following
+        }
+    ];
 
     return (
 
@@ -51,45 +86,31 @@ const Home = () => {
                     }}
                 />
 
-
-
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell>
-                                    Username
-                                </TableCell>
-                                <TableCell align="right">
+                                {/* <StyledTableCell>
+                                    User
+                                </StyledTableCell> */}
+                                <StyledTableCell colspan="2" align="center">
                                     {auth.user}
-                                </TableCell>
+                                </StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>
-                                    Repositórios
-                                </TableCell>
-                                <TableCell align="right">
-                                    {userGitHub.public_repos}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>
-                                    Seguidores
-                                </TableCell>
-                                <TableCell align="right">
-                                    {userGitHub.followers}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>
-                                    Seguindo
-                                </TableCell>
-                                <TableCell align="right">
-                                    {userGitHub.following}
-                                </TableCell>
-                            </TableRow>
+                            {
+                                linhas.map((linha) => (
+                                    <StyledTableRow>
+                                        <StyledTableCell>
+                                            {linha.titulo}
+                                        </StyledTableCell>
+                                        <StyledTableCell align="right">
+                                            {linha.dado}
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                ))
+                            }
                         </TableBody>
                     </Table>
 

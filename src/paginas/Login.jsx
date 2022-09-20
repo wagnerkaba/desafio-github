@@ -22,10 +22,7 @@ const Login = () => {
     let navigate = useNavigate();
     let auth = useAuth();
 
-
-
     async function login() {
-
         try {
             const userGitHub = await axios.get(`https://api.github.com/users/${inputUsuario}`);
             localStorage.setItem("userGitHub", JSON.stringify(userGitHub.data));
@@ -35,10 +32,7 @@ const Login = () => {
         }
         catch (erro) {
             setErro({ valido: false, texto: "Verifique se o nome de usuário está correto" });
-
-
         }
-
     }
 
     return (
@@ -90,7 +84,7 @@ const Login = () => {
                 Entrar
             </Button>
 
-        </Box >
+        </Box>
     );
 }
 
