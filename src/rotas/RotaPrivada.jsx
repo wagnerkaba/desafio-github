@@ -19,7 +19,13 @@ function RotaPrivada() {
     }
 
     // se usuário não está logado, ele é redirecionado para login
-    return <Navigate to="/" />;
+    return (
+        <>
+            {console.log("usuário não autenticado")}
+            <Navigate to="/" />
+        </>
+
+    );
 }
 
 export default RotaPrivada;
