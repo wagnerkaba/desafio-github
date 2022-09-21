@@ -12,22 +12,27 @@ import {
     Typography
 } from "@mui/material";
 import { useAuth } from '../context/Autenticacao';
-import { buscaDadosGithub, buscaUsuario } from "../servicos/apiGitHub";
+import { buscaDadosGithub, mudaUsuario } from "../servicos/apiGitHub";
 import {
     useNavigate
 } from "react-router-dom";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
+let isPeople = false;
 
-const VisualizarLista = ({tipoLista, titulo, Componente}) => {
+const VisualizarLista = ({ tipoLista, titulo }) => {
     const drawerWidth = 240;
     const auth = useAuth();
     const url = `https://api.github.com/users/${auth.user}/${tipoLista}`;
-    const [seguidores, setSeguidores] = useState([]);
+    const [dados, setDados] = useState([]);
     const navigate = useNavigate();
+    
+    if (tipoLista !== 'repos') isPeople = true; 
+    else isPeople = false;
 
     useEffect(
         () => {
-            buscaDadosGithub(url, setSeguidores)
+            buscaDadosGithub(url, setDados, isPeople)
         },
         [url]
     );
@@ -50,28 +55,31 @@ const VisualizarLista = ({tipoLista, titulo, Componente}) => {
             </Typography>
             <List dense={false}>
                 {
-                    seguidores.map((seguidor) => (
+                    dados.map((dado) => (
 
                         <ListItem
                             divider={true}
-                            key={seguidor.login}
+                            key={dado.name}
                         >
                             <ListItemButton
                                 component="button"
                                 onClick={
                                     () => {
-                                        buscaUsuario(seguidor.login, auth.setUser, auth.setAvatar )
-                                        navigate("/privado");
+                                        if (isPeople) {
+                                            mudaUsuario(dado.name, auth.setUser, auth.setAvatar, navigate);
+                                        } else {
+                                            window.open(dado.html_url,"_blank","noreferrer");
+                                        }
                                     }
                                 }>
                                 <ListItemAvatar>
-                                    <Avatar
-                                        alt={seguidor.login}
-                                        src={seguidor.avatar_url}
-                                    />
+                                    {
+                                        isPeople ? <Avatar alt={dado.name} src={dado.avatar_url} /> : <GitHubIcon />
+                                    }
+
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={seguidor.login}
+                                    primary={dado.name}
                                 />
                             </ListItemButton>
                         </ListItem>
