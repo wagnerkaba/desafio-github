@@ -87,7 +87,7 @@ const DrawerItens = (props) => {
                     const { text, icon, onClick } = item;
 
                     return (
-                        <>
+                        <div key={index}>
                             {
                                 // Mostra um Divider após Seguidores
                                 (index===4)? <Divider/> : null
@@ -98,7 +98,7 @@ const DrawerItens = (props) => {
                                 <ListItemText primary={text} />
                             </ListItem>
 
-                        </>
+                        </div>
 
 
                     );

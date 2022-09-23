@@ -21,7 +21,6 @@ function RotaPrivada() {
     // se usuário não está logado, ele é redirecionado para login
     return (
         <>
-            {console.log("usuário não autenticado")}
             <Navigate to="/" />
         </>
 

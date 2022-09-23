@@ -21,7 +21,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 let isPeople = false;
 
 const VisualizarLista = ({ tipoLista, titulo }) => {
-    const drawerWidth = 240;
+    const drawerWidth = parseInt(process.env.REACT_APP_DRAWER_WIDTH);//variavel de ambiente salva no arquivo .env
     const auth = useAuth();
     const url = `https://api.github.com/users/${auth.user}/${tipoLista}`;
     const [dados, setDados] = useState([]);

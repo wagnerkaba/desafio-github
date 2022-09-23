@@ -15,7 +15,7 @@ import {
 import DrawerItens from './DrawerItens';
 import { useAuth } from '../../context/Autenticacao';
 
-const drawerWidth = 240;
+const drawerWidth = parseInt(process.env.REACT_APP_DRAWER_WIDTH);//variavel de ambiente salva no arquivo .env
 
 
 const DrawerResponsivo = (props) => {
@@ -25,7 +25,6 @@ const DrawerResponsivo = (props) => {
   const [sobre, setSobre] = React.useState(false);
 
   const handleDrawerToggle = () => {
-    console.log("teste");
     setMobileOpen(!mobileOpen);
   };
 

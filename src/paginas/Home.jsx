@@ -39,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 const Home = () => {
-    const drawerWidth = 240;
+    const drawerWidth = parseInt(process.env.REACT_APP_DRAWER_WIDTH);//variavel de ambiente salva no arquivo .env
     const auth = useAuth();
     const userGitHub = JSON.parse(localStorage.getItem("userGitHub"));
 
@@ -90,15 +90,15 @@ const Home = () => {
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell colspan="2" align="center">
+                                <StyledTableCell colSpan="2" align="center">
                                     {auth.user}
                                 </StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {
-                                linhas.map((linha) => (
-                                    <StyledTableRow>
+                                linhas.map((linha, index) => (
+                                    <StyledTableRow key={index}>
                                         <StyledTableCell>
                                             {linha.titulo}
                                         </StyledTableCell>
